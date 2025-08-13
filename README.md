@@ -64,3 +64,12 @@ We have implemented security, compliance, and DevSecOps practices using Microsof
 | Security & Compliance       | SOC, ISO, HIPAA, GDPR                 | SOC, ISO, HIPAA, GDPR            | SOC, ISO, HIPAA, GDPR            |
 | Pricing Model               | Pay-per-data-ingested + alerts        | Pay-per-finding & volume-based   | Pay-per-ingested event/log        |
 | DevSecOps Integration       | APIs, playbooks, connectors, Terraform | Integrates with CI/CD & automation | APIs, SIEM integrations, Terraform |
+
+
+---
+
+
+*Last updated: August 2025*
+
+
+-------------------------------------------------------------------------------------------
