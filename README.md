@@ -1,49 +1,66 @@
-# CST8919 – DevOps Security and Compliance
+# 🔒 CST8919 DevOps – Security and Compliance
 
-## Assignment 2 – Cloud Service Alternatives Report
+## ☁️ Cloud Security & Compliance Services Comparison (Azure vs AWS vs GCP)   
 
-**Due:** Week 15 (August 15, 2025) – Submit GitHub repository link via Brightspace by 11:59 PM  
-**Weight:** 10% of Final Grade  
-**Type:** Individual Assignment  
+## Overview
+
+This repository provides a detailed comparison of key **Microsoft Azure** security, compliance, and DevSecOps services with their closest equivalents in **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)**.
+
+### Scope
+The comparison focuses on five major security and DevSecOps service categories:
+1. **Identity & Access Management (SSO, IAM)** – Workforce and customer identity, SSO, and access control.
+2. **Monitoring & Logging** – Metrics, logs, traces, and audit trails.
+3. **Policy & Governance** – Cloud resource compliance, guardrails, and automated remediation.
+4. **Cloud Security Posture & Workload Protection** – CSPM, CNAPP, vulnerability management, and threat detection.
+5. **SIEM / SOAR** – Security information and event management, plus automation and orchestration.
+
+<img width="836" height="824" alt="ChatGPT Image Aug 13, 2025, 03_21_04 PM" src="https://github.com/user-attachments/assets/126c15da-a250-4130-b3f9-1f3e7a4952f0" />
 
 ---
 
-## Objective
-In this course, we have worked extensively with Microsoft Azure services to implement security, compliance, and DevSecOps practices. The goal of this assignment is to **broaden your cloud knowledge** by researching and identifying **equivalent services** in **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)** for each Azure service we studied. You will then **compare** these services in terms of features, security/compliance capabilities, and pricing.
+We have implemented security, compliance, and DevSecOps practices using Microsoft Azure services. Below is a comparison of equivalent services in AWS and GCP.
 
-You will present your findings in **Markdown format** within a **GitHub repository** to simulate real-world documentation practices.
+## 1. Identity & Access Management (SSO, IAM)
 
----
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Active Directory (AAD): SSO, IAM, MFA, Conditional Access | AWS Identity and Access Management (IAM), AWS Single Sign-On | Google Identity, Cloud IAM, Identity-Aware Proxy |
+| Security & Compliance       | ISO 27001, SOC 1/2/3, GDPR, HIPAA   | ISO 27001, SOC 1/2/3, GDPR, HIPAA | ISO 27001, SOC 1/2/3, GDPR, HIPAA |
+| Pricing Model               | Free tier + per-user/licensed features | Free tier + per-user/licensed features | Free tier + per-user/licensed features |
+| DevSecOps Integration       | Supports CI/CD integration, API access, Terraform, GitHub Actions | Supports Terraform, CloudFormation, CI/CD pipelines | Supports Terraform, Cloud Build, CI/CD pipelines |
 
-## Instructions
+## 2. Monitoring & Logging
 
-### 1. Identify Azure Services Used in the Course
-Review your labs, quizzes, and assignments from the course to create a list of Azure services we used.  
-At a minimum, your report must include:
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Monitor & Log Analytics: metrics, logs, alerts, dashboards | Amazon CloudWatch: metrics, logs, alarms, dashboards | Google Cloud Monitoring & Logging: metrics, logs, alerts, dashboards |
+| Security & Compliance       | SOC, ISO, GDPR, HIPAA                 | SOC, ISO, GDPR, HIPAA            | SOC, ISO, GDPR, HIPAA            |
+| Pricing Model               | Pay-per-use (ingested data, alerts)  | Pay-per-use (metrics, logs, dashboards) | Pay-per-use (metrics, logs, dashboards) |
+| DevSecOps Integration       | CI/CD pipelines, API access, Terraform | Supports CloudFormation, Terraform, CI/CD | Supports Terraform, Cloud Build, CI/CD |
 
-- Azure Active Directory (SSO, IAM)  
-- Azure Monitor & Log Analytics  
-- Azure Policy  
-- Defender for Cloud
-- Azure Sentinel (SIEM/SOAR)
+## 3. Policy & Governance
 
-### 2. Find the AWS & GCP Equivalents
-For each Azure service above:
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Policy: enforce standards and compliance | AWS Config & AWS Organizations   | Google Cloud Policy Intelligence & Organization Policy |
+| Security & Compliance       | ISO, SOC, HIPAA, GDPR                 | ISO, SOC, HIPAA, GDPR            | ISO, SOC, HIPAA, GDPR            |
+| Pricing Model               | Pay-per-policy evaluation             | Pay-per-rule evaluation           | Free tier + pay-per-policy evaluations |
+| DevSecOps Integration       | CI/CD automation, ARM templates, Terraform | CloudFormation, Terraform, CI/CD | Terraform, Deployment Manager, CI/CD |
 
-- Identify the **closest AWS equivalent service**  
-- Identify the **closest GCP equivalent service**
+## 4. Threat Protection
 
-### 3. Compare the Services
-For each service, include:
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Microsoft Defender for Cloud: threat detection, vulnerability management | AWS GuardDuty, AWS Security Hub  | Google Cloud Security Command Center |
+| Security & Compliance       | SOC, ISO, HIPAA, GDPR                 | SOC, ISO, HIPAA, GDPR            | SOC, ISO, HIPAA, GDPR            |
+| Pricing Model               | Pay-as-you-go per resource            | Pay-per-findings, resource count | Pay-as-you-go per resource       |
+| DevSecOps Integration       | Integrates with Azure Sentinel, CI/CD pipelines | Integrates with CloudWatch, CI/CD | Integrates with Cloud Logging, CI/CD |
 
-- **Overview** – short description of each service  
-- **Core Features** – key capabilities and functions  
-- **Security & Compliance** – relevant certifications and compliance standards  
-- **Pricing Model** – general cost considerations  
-- **Integration for DevSecOps** – compatibility with automation, CI/CD, and monitoring tools  
+## 5. SIEM / SOAR
 
-### 4. Organize in Markdown
-- Create a `README.md` file in your GitHub repository containing your report  
-- Use **headings**, **tables**, and **bullet points** for readability  
-- Include a **comparison table** for quick reference, followed by **narrative analysis**
-
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Sentinel: SIEM & SOAR, analytics, automated response | AWS Security Hub + Amazon Detective | Chronicle Security (SIEM), Security Command Center (SOAR) |
+| Security & Compliance       | SOC, ISO, HIPAA, GDPR                 | SOC, ISO, HIPAA, GDPR            | SOC, ISO, HIPAA, GDPR            |
+| Pricing Model               | Pay-per-data-ingested + alerts        | Pay-per-finding & volume-based   | Pay-per-ingested event/log        |
+| DevSecOps Integration       | APIs, playbooks, connectors, Terraform | Integrates with CI/CD & automation | APIs, SIEM integrations, Terraform |
