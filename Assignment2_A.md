@@ -4,10 +4,15 @@
 
 ## Overview
 
-This document maps commonly used **Microsoft Azure** security and DevSecOps services to their closest **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)** equivalents. It also compares **features**, **security & compliance**, **pricing model**, and **DevSecOps integration**.
+This repository provides a detailed comparison of key **Microsoft Azure** security, compliance, and DevSecOps services with their closest equivalents in **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)**.
 
-> **Scope.** Focused on: **Identity/SSO**, **Monitoring & Logging**, **Policy/Governance**, **Cloud Security Posture/Workload Protection**, and **SIEM/SOAR**.
-
+### Scope
+The comparison focuses on five major security and DevSecOps service categories:
+1. **Identity & Access Management (SSO, IAM)** – Workforce and customer identity, SSO, and access control.
+2. **Monitoring & Logging** – Metrics, logs, traces, and audit trails.
+3. **Policy & Governance** – Cloud resource compliance, guardrails, and automated remediation.
+4. **Cloud Security Posture & Workload Protection** – CSPM, CNAPP, vulnerability management, and threat detection.
+5. **SIEM / SOAR** – Security information and event management, plus automation and orchestration.
 
 ## Table of Contents
 
