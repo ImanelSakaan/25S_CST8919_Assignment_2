@@ -14,6 +14,9 @@ The comparison focuses on five major security and DevSecOps service categories:
 4. **Cloud Security Posture & Workload Protection** – CSPM, CNAPP, vulnerability management, and threat detection.
 5. **SIEM / SOAR** – Security information and event management, plus automation and orchestration.
 
+<img width="836" height="824" alt="ChatGPT Image Aug 13, 2025, 03_21_04 PM" src="https://github.com/user-attachments/assets/126c15da-a250-4130-b3f9-1f3e7a4952f0" />
+
+
 ## Table of Contents
 
 1. [Quick Mapping](#quick-mapping)
