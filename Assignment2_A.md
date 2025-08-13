@@ -16,7 +16,6 @@ The comparison focuses on five major security and DevSecOps service categories:
 
 <img width="836" height="824" alt="ChatGPT Image Aug 13, 2025, 03_21_04 PM" src="https://github.com/user-attachments/assets/126c15da-a250-4130-b3f9-1f3e7a4952f0" />
 
-
 ## Table of Contents
 
 1. [Quick Mapping](#quick-mapping)
@@ -48,70 +47,118 @@ The comparison focuses on five major security and DevSecOps service categories:
 
 ---
 
-## Quick Mapping
+## 1. Identity & Access Management (SSO, IAM) - Azure, AWS, GCP
 
-| Category | Azure | AWS (closest equivalents) | GCP (closest equivalents) |
-|---|---|---|---|
-| Identity & SSO (Workforce) | **Microsoft Entra ID** (Azure AD) | **AWS IAM Identity Center** (AWS SSO), **AWS IAM** | **Google Cloud Identity**, **Cloud IAM** |
-| Customer Identity (B2C) | **Entra External ID / Azure AD B2C** | **Amazon Cognito** | **Identity Platform** (Managed Firebase Auth) |
-| Monitoring & Logs | **Azure Monitor** + **Log Analytics** | **Amazon CloudWatch** (Metrics, Logs), **AWS CloudTrail** | **Cloud Monitoring**, **Cloud Logging**, **Cloud Audit Logs** |
-| Policy & Governance | **Azure Policy** | **AWS Config**, **AWS Organizations SCPs** | **Organization Policy Service**, **Config Validator/Policy Controller** |
-| Cloud Security Posture/Threat/Workload | **Microsoft Defender for Cloud** | **AWS Security Hub**, **Amazon GuardDuty**, **Amazon Inspector**, **Amazon Macie** | **Security Command Center (SCC)** (Standard/Premium) |
-| SIEM / SOAR | **Microsoft Sentinel** | No fully managed SIEM: **Security Lake** + **OpenSearch**/**Partner SIEM**, **AWS Detective** (investigation), **EventBridge**/**Step Functions** for orchestration | **Chronicle SIEM** (SaaS), **SOAR via Playbooks/Workflows**, **Cloud Logging** sinks |
-
----
-
-## 1) Identity & Access Management (SSO, IAM)
-
-### Azure — Microsoft Entra ID (Azure Active Directory)
-**Overview.** Workforce identity, SSO, MFA, Conditional Access, device & app management, B2B collaboration.  
-**Core Features.** SAML/OIDC/OAuth2, SCIM provisioning, Conditional Access, risk-based policies, Identity Protection, PIM (privileged access), hybrid AD join, app gallery.  
-**Security & Compliance.** Inherits platform certifications (ISO 27001, SOC 1/2/3, PCI DSS, HIPAA eligibility, FedRAMP/HITRUST for many regions/services).  
-**Pricing Model.** Free, **P1**, **P2** (advanced CA/Identity Protection/PIM). B2C/External ID priced by MAUs.  
-**Integration for DevSecOps.** Terraform/AzureRM, Bicep, ARM; GitHub Actions/Azure DevOps tasks; audit logs to Log Analytics/Sentinel; Graph/ MS Graph APIs.
-
-### AWS — IAM Identity Center (+ IAM) / Amazon Cognito
-**Overview.** Identity Center for workforce SSO to AWS accounts/apps; IAM for resource permissions; Cognito for customer identity.  
-**Core Features.** SAML/OIDC, SCIM, app assignments, permission sets, MFA; Cognito user pools & federations.  
-**Security & Compliance.** Broad AWS compliance portfolio.  
-**Pricing Model.** Identity Center has no standalone charge (underlying services incur costs). Cognito billed per MAU and features.  
-**Integration for DevSecOps.** CloudFormation, CDK, Terraform; CloudTrail/CloudWatch logs; APIs/SDKs; integrates with Organizations and SSO to third‑party apps.
-
-### GCP — Cloud Identity / Cloud IAM / Identity Platform
-**Overview.** Cloud Identity for workforce identity/SSO; Cloud IAM for permissions; Identity Platform for customer identity.  
-**Core Features.** SAML/OIDC, MFA, Context‑Aware Access, SCIM (via connectors), fine‑grained IAM policies.  
-**Security & Compliance.** Broad Google Cloud compliance portfolio.  
-**Pricing Model.** Cloud Identity (Free/Premium), Identity Platform billed per MAU.  
-**Integration for DevSecOps.** Terraform/Deployment Manager; Admin and Cloud Audit Logs to **Cloud Logging** and **Chronicle**; APIs/SDKs.
+| **Feature** | **Microsoft Azure** | **Amazon Web Services (AWS)** | **Google Cloud Platform (GCP)** |
+|-------------|--------------------|------------------------------|----------------------------------|
+| **Primary IAM Service** | Azure Active Directory (Entra ID) | AWS Identity and Access Management (IAM) | Identity and Access Management (IAM) |
+| **Single Sign-On (SSO)** | Azure AD Single Sign-On | AWS Single Sign-On (AWS IAM Identity Center) | Cloud Identity / Google Workspace SSO |
+| **User Federation** | Azure AD B2B/B2C | AWS IAM Federation with SAML / OIDC | Cloud Identity Federation with SAML / OIDC |
+| **Role-Based Access Control (RBAC)** | Azure RBAC | AWS IAM Roles & Policies | IAM Roles & Policies |
+| **Multi-Factor Authentication (MFA)** | Azure MFA (Microsoft Authenticator, SMS, Voice) | AWS MFA (Virtual MFA App, U2F Key, SMS) | 2-Step Verification (Google Authenticator, Security Keys) |
+| **Privileged Access Management (PAM)** | Azure AD Privileged Identity Management (PIM) | IAM Access Analyzer + AWS SSO Permission Sets | IAM Recommender + Policy Analyzer |
+| **Conditional Access** | Azure Conditional Access Policies | AWS IAM Policy Conditions | Context-Aware Access (Google) |
+| **Audit & Activity Logs** | Azure AD Sign-in Logs, Audit Logs | AWS CloudTrail, IAM Access Analyzer Logs | Cloud Audit Logs |
+| **Passwordless Authentication** | FIDO2 Security Keys, Windows Hello for Business | U2F/FIDO2 Security Keys | Titan Security Key, Google Prompt |
+| **Integration with On-Premises AD** | Azure AD Connect | AD Connector for AWS Directory Service | Google Cloud Directory Sync (GCDS) |
 
 ---
 
-## 2) Monitoring & Logging
+## 2. Monitoring & Logging Services Comparison
 
-### Azure — Azure Monitor & Log Analytics
-**Overview.** Unified metrics, logs, and traces; Kusto Query Language (KQL) via Log Analytics workspaces.  
-**Core Features.** Metrics, Logs, Alerts, Application Insights (APM), Workbooks, Auto-scale, VM insights, Container insights, Agent‑based/agentless collection.  
-**Security & Compliance.** Inherits Azure platform certifications.  
-**Pricing Model.** Pay‑as‑you‑go per metric series, log ingestion (GB), retention, and solutions. **Basic** and **LA** tiers available in some regions.  
-**Integration for DevSecOps.** Export to Event Hub/Storage/Sentinel; CI/CD via ARM/Bicep/Terraform; GitHub Actions/Azure DevOps; APIs/Diagnostics settings.
+## Overview
+This table compares **Monitoring & Logging** services across Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP).
 
-### AWS — Amazon CloudWatch (+ CloudTrail)
-**Overview.** Metrics, logs, alarms, dashboards; CloudTrail for API/audit logs.  
-**Core Features.** Metrics/Logs/Alarms, Contributor Insights, Log Insights queries, Synthetics canaries, RUM, X‑Ray traces, cross‑account observability.  
-**Security & Compliance.** Inherits AWS certifications.  
-**Pricing Model.** Per metric, log ingestion/storage, queries, canaries, RUM, dashboards. CloudTrail per event/data event options.  
-**Integration for DevSecOps.** EventBridge integration, Lambda targets, CDK/CloudFormation/Terraform, export to S3/OpenSearch/Security Lake.
+| Cloud Provider | Service Name | Overview | Core Features | Security & Compliance | Pricing Model | DevSecOps Integration |
+|----------------|--------------|----------|---------------|-----------------------|---------------|-----------------------|
+| **Azure** | Azure Monitor | Comprehensive platform for collecting, analyzing, and acting on telemetry from cloud and on-premises environments. | Metrics & logs collection, Application Insights, Alerts, Dashboards, Workbooks | ISO 27001, SOC, GDPR, HIPAA, FedRAMP | Pay-as-you-go based on data ingestion & retention | Integrates with Azure DevOps, GitHub Actions, REST API, Logic Apps |
+| **Azure** | Log Analytics | Service for querying and analyzing log data collected by Azure Monitor. | Kusto Query Language (KQL), data correlation, visualization | ISO 27001, SOC, GDPR, HIPAA, FedRAMP | Charged per GB ingested and retention duration | Works with CI/CD for automated diagnostics and monitoring |
+| **AWS** | Amazon CloudWatch | Monitoring and observability service for AWS and on-prem resources. | Metrics, logs, events, alarms, dashboards | ISO 27001, SOC, PCI DSS, GDPR, FedRAMP | Pay-as-you-go per metric, log ingestion, and dashboard usage | Integrates with CodePipeline, CodeBuild, Lambda, EventBridge |
+| **GCP** | Cloud Monitoring | Provides visibility into performance, uptime, and health of cloud-powered apps. | Metrics, alerts, dashboards, uptime checks | ISO 27001, SOC, GDPR, HIPAA | Free tier, then pay per API call and metric volume | Integrates with Cloud Build, Cloud Functions, Pub/Sub |
+| **GCP** | Cloud Logging | Centralized logging service for GCP and hybrid environments. | Log ingestion, querying, routing, alerting | ISO 27001, SOC, GDPR, HIPAA | Pay-as-you-go based on log ingestion & storage | Integrates with Cloud Operations Suite, Pub/Sub, CI/CD pipelines |
 
-### GCP — Cloud Monitoring & Cloud Logging (+ Cloud Audit Logs)
-**Overview.** Managed metrics, logs, dashboards, uptime checks, alerts; audit logs by default.  
-**Core Features.** Metrics explorer, Log‑based metrics, Error Reporting, Trace/Profiler, Managed Prometheus, SLOs & alerting policies.  
-**Security & Compliance.** Inherits Google Cloud certifications.  
-**Pricing Model.** Tiered log ingestion and retention; metrics priced per time series and API usage.  
-**Integration for DevSecOps.** Sinks to BigQuery/PubSub/Storage/**Chronicle**; Terraform; Cloud Functions/Run triggers; Opsgenie/PagerDuty via webhooks.
+---
+
+## Key Notes
+- **Azure Monitor + Log Analytics** work together; Monitor handles collection and analysis, Log Analytics specializes in querying.
+- **AWS CloudWatch** combines metrics, logs, and events, but detailed log querying may require CloudWatch Logs Insights.
+- **GCP Cloud Monitoring + Logging** integrate under the Operations Suite, allowing seamless metric-log correlation.
 
 ---
 
 ## 3) Policy & Governance
+# Policy & Governance
+# Cloud Security & Compliance Services Comparison
+
+We have implemented security, compliance, and DevSecOps practices using Microsoft Azure services. Below is a comparison of equivalent services in AWS and GCP.
+
+## 1. Identity & Access Management (SSO, IAM)
+
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Active Directory (AAD): SSO, IAM, MFA, Conditional Access | AWS Identity and Access Management (IAM), AWS Single Sign-On | Google Identity, Cloud IAM, Identity-Aware Proxy |
+| Security & Compliance       | ISO 27001, SOC 1/2/3, GDPR, HIPAA   | ISO 27001, SOC 1/2/3, GDPR, HIPAA | ISO 27001, SOC 1/2/3, GDPR, HIPAA |
+| Pricing Model               | Free tier + per-user/licensed features | Free tier + per-user/licensed features | Free tier + per-user/licensed features |
+| DevSecOps Integration       | Supports CI/CD integration, API access, Terraform, GitHub Actions | Supports Terraform, CloudFormation, CI/CD pipelines | Supports Terraform, Cloud Build, CI/CD pipelines |
+
+## 2. Monitoring & Logging
+
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Monitor & Log Analytics: metrics, logs, alerts, dashboards | Amazon CloudWatch: metrics, logs, alarms, dashboards | Google Cloud Monitoring & Logging: metrics, logs, alerts, dashboards |
+| Security & Compliance       | SOC, ISO, GDPR, HIPAA                 | SOC, ISO, GDPR, HIPAA            | SOC, ISO, GDPR, HIPAA            |
+| Pricing Model               | Pay-per-use (ingested data, alerts)  | Pay-per-use (metrics, logs, dashboards) | Pay-per-use (metrics, logs, dashboards) |
+| DevSecOps Integration       | CI/CD pipelines, API access, Terraform | Supports CloudFormation, Terraform, CI/CD | Supports Terraform, Cloud Build, CI/CD |
+
+## 3. Policy & Governance
+
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Policy: enforce standards and compliance | AWS Config & AWS Organizations   | Google Cloud Policy Intelligence & Organization Policy |
+| Security & Compliance       | ISO, SOC, HIPAA, GDPR                 | ISO, SOC, HIPAA, GDPR            | ISO, SOC, HIPAA, GDPR            |
+| Pricing Model               | Pay-per-policy evaluation             | Pay-per-rule evaluation           | Free tier + pay-per-policy evaluations |
+| DevSecOps Integration       | CI/CD automation, ARM templates, Terraform | CloudFormation, Terraform, CI/CD | Terraform, Deployment Manager, CI/CD |
+
+## 4. Threat Protection
+
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Microsoft Defender for Cloud: threat detection, vulnerability management | AWS GuardDuty, AWS Security Hub  | Google Cloud Security Command Center |
+| Security & Compliance       | SOC, ISO, HIPAA, GDPR                 | SOC, ISO, HIPAA, GDPR            | SOC, ISO, HIPAA, GDPR            |
+| Pricing Model               | Pay-as-you-go per resource            | Pay-per-findings, resource count | Pay-as-you-go per resource       |
+| DevSecOps Integration       | Integrates with Azure Sentinel, CI/CD pipelines | Integrates with CloudWatch, CI/CD | Integrates with Cloud Logging, CI/CD |
+
+## 5. SIEM / SOAR
+
+| Feature / Aspect            | Azure                                 | AWS Equivalent                    | GCP Equivalent                    |
+|-----------------------------|--------------------------------------|----------------------------------|----------------------------------|
+| Core Features               | Azure Sentinel: SIEM & SOAR, analytics, automated response | AWS Security Hub + Amazon Detective | Chronicle Security (SIEM), Security Command Center (SOAR) |
+| Security & Compliance       | SOC, ISO, HIPAA, GDPR                 | SOC, ISO, HIPAA, GDPR            | SOC, ISO, HIPAA, GDPR            |
+| Pricing Model               | Pay-per-data-ingested + alerts        | Pay-per-finding & volume-based   | Pay-per-ingested event/log        |
+| DevSecOps Integration       | APIs, playbooks, connectors, Terraform | Integrates with CI/CD & automation | APIs, SIEM integrations, Terraform |
+
+
+
+
+
+
+
+
+| Category                     | Azure Services / Features                         | Purpose / Description                                                                 |
+|-------------------------------|--------------------------------------------------|-------------------------------------------------------------------------------------|
+| Governance & Management       | Azure Policy                                     | Define, enforce, and monitor compliance of resources with organizational standards.  |
+|                               | Azure Blueprints                                 | Create repeatable environments with governance, policies, and resource templates.   |
+|                               | Management Groups                                | Organize subscriptions into hierarchical groups for unified policy and access.      |
+|                               | Azure Resource Graph                             | Explore and query resources at scale for governance and auditing.                    |
+| Compliance & Audit            | Microsoft Compliance Manager                     | Assess compliance with regulatory standards and manage controls.                     |
+|                               | Azure Security Center / Microsoft Defender      | Continuous security posture assessment and recommendations for compliance.           |
+|                               | Azure Monitor & Log Analytics                    | Track resource activity and audit logs for governance and regulatory requirements.   |
+| Access Control & IAM Policies | Azure Active Directory Conditional Access        | Enforce access policies based on user, device, location, and risk.                  |
+|                               | Role-Based Access Control (RBAC)                | Assign granular permissions to users, groups, and applications.                      |
+|                               | Privileged Identity Management (PIM)            | Manage and control privileged accounts with just-in-time access.                     |
+| Cost & Resource Management    | Azure Cost Management + Billing                  | Monitor usage, enforce budgets, and optimize cloud spend.                            |
+|                               | Tags & Resource Naming Conventions               | Implement organizational standards for easier governance and reporting.             |
+
 
 ### Azure — Azure Policy
 **Overview.** Declarative policy engine to **audit**, **deny**, or **deployIfNotExists** across subscriptions/management groups.  
