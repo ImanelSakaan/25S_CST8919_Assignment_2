@@ -1,6 +1,8 @@
-# Cloud Security & DevSecOps Service Comparison (Azure vs AWS vs GCP)
+# 🚀 CST8919 DevOps – Security and Compliance
 
-**Last updated:** 2025-08-13
+# ☁️ Cloud Security & DevSecOps Service Comparison (Azure vs AWS vs GCP)
+
+## Overview
 
 This document maps commonly used **Microsoft Azure** security and DevSecOps services to their closest **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)** equivalents. It also compares **features**, **security & compliance**, **pricing model**, and **DevSecOps integration**.
 
