@@ -1,12 +1,42 @@
-# 🚀 CST8919 DevOps – Security and Compliance
+# 🔒 CST8919 DevOps – Security and Compliance
 
-# ☁️ Cloud Security & DevSecOps Service Comparison (Azure vs AWS vs GCP)
+## ☁️ Cloud Security & DevSecOps Service Comparison (Azure vs AWS vs GCP)
 
 ## Overview
 
 This document maps commonly used **Microsoft Azure** security and DevSecOps services to their closest **Amazon Web Services (AWS)** and **Google Cloud Platform (GCP)** equivalents. It also compares **features**, **security & compliance**, **pricing model**, and **DevSecOps integration**.
 
 > **Scope.** Focused on: **Identity/SSO**, **Monitoring & Logging**, **Policy/Governance**, **Cloud Security Posture/Workload Protection**, and **SIEM/SOAR**.
+
+
+## Table of Contents
+
+1. [Quick Mapping](#quick-mapping)
+2. [1) Identity & Access Management (SSO, IAM)](#1-identity--access-management-sso-iam)
+   - [Azure — Microsoft Entra ID (Azure AD)](#azure--microsoft-entra-id-azure-active-directory)
+   - [AWS — IAM Identity Center (+ IAM) / Amazon Cognito](#aws--iam-identity-center--iam--amazon-cognito)
+   - [GCP — Cloud Identity / Cloud IAM / Identity Platform](#gcp--cloud-identity--cloud-iam--identity-platform)
+3. [2) Monitoring & Logging](#2-monitoring--logging)
+   - [Azure — Azure Monitor & Log Analytics](#azure--azure-monitor--log-analytics)
+   - [AWS — Amazon CloudWatch (+ CloudTrail)](#aws--amazon-cloudwatch--cloudtrail)
+   - [GCP — Cloud Monitoring & Cloud Logging (+ Cloud Audit Logs)](#gcp--cloud-monitoring--cloud-logging--cloud-audit-logs)
+4. [3) Policy & Governance](#3-policy--governance)
+   - [Azure — Azure Policy](#azure--azure-policy)
+   - [AWS — AWS Config + Organizations SCPs](#aws--aws-config--organizations-scps)
+   - [GCP — Organization Policy Service (+ Policy Controller/Config Validator)](#gcp--organization-policy-service--policy-controllerconfig-validator)
+5. [4) Cloud Security Posture / Threat & Workload Protection](#4-cloud-security-posture--threat--workload-protection)
+   - [Azure — Microsoft Defender for Cloud](#azure--microsoft-defender-for-cloud)
+   - [AWS — Security Hub + GuardDuty + Inspector (+ Macie)](#aws--security-hub--guardduty--inspector--macie)
+   - [GCP — Security Command Center (SCC)](#gcp--security-command-center-scc)
+6. [5) SIEM / SOAR](#5-siem--soar)
+   - [Azure — Microsoft Sentinel (SIEM/SOAR)](#azure--microsoft-sentinel-siemsoar)
+   - [AWS — Closest Alternatives (No fully managed SIEM)](#aws--closest-alternatives-no-fully-managed-siem)
+   - [GCP — Chronicle SIEM (with SOAR options)](#gcp--chronicle-siem-with-soar-options)
+7. [Decision Points & Notes](#decision-points--notes)
+8. [DevSecOps Integration Cheatsheet](#devsecops-integration-cheatsheet)
+9. [Repository Structure](#repository-structure)
+10. [CSV Matrix (for spreadsheets)](#csv-matrix-for-spreadsheets)
+11. [How to Publish to GitHub](#how-to-publish-to-github)
 
 ---
 
